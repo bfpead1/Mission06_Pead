@@ -1,0 +1,71 @@
+@model Mission06_Pead.Models.Movie
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<h1>Add Movie</h1>
+
+<form asp-controller="Home" asp-action="Add" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-2">
+        <label asp-for="CategoryName" class="form-label">Category</label>
+        <input asp-for="CategoryName" class="form-control" />
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Title" class="form-label">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Year" class="form-label">Year</label>
+        <input asp-for="Year" class="form-control" type="number" />
+        <span asp-validation-for="Year" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Director" class="form-label">Director</label>
+        <input asp-for="Director" class="form-control" />
+        <span asp-validation-for="Director" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Rating" class="form-label">Rating</label>
+        <select asp-for="Rating" class="form-select">
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+        </select>
+        <span asp-validation-for="Rating" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Edited" class="form-label">Edited</label>
+        <select asp-for="Edited" class="form-select">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="LentTo" class="form-label">Lent To (optional)</label>
+        <input asp-for="LentTo" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Notes" class="form-label">Notes (optional, max 25 characters)</label>
+        <input asp-for="Notes" class="form-control" maxlength="25" />
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Movie</button>
+</form>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}
