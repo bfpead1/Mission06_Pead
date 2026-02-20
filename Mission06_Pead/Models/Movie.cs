@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Pead.Models
 {
@@ -7,32 +6,29 @@ namespace Mission06_Pead.Models
     {
         public int MovieId { get; set; }
 
-        [Required]
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         public Category? Category { get; set; }
 
-        [NotMapped]
-        [Required(ErrorMessage = "Category is required")]
-        public string CategoryName { get; set; } = string.Empty;
-
-        [Required]
+        [Required(ErrorMessage = "Title is required")]
         public string Title { get; set; } = string.Empty;
 
-        [Required]
-        [Range(1900, 2100)]
+        [Required(ErrorMessage = "Year is required")]
+        [Range(1888, 2100, ErrorMessage = "Year must be 1888 or later")]
         public int Year { get; set; }
 
-        [Required]
-        public string Director { get; set; } = string.Empty;
+        public string? Director { get; set; }
 
-        [Required]
-        public string Rating { get; set; } = "G";
+        public string? Rating { get; set; }
 
-        public bool Edited { get; set; }
+        [Required(ErrorMessage = "Edited is required")]
+        public bool? Edited { get; set; }
 
         public string? LentTo { get; set; }
 
-        [StringLength(25)]
+        [Required(ErrorMessage = "Copied to Plex is required")]
+        public bool? CopiedToPlex { get; set; }
+
+        [StringLength(25, ErrorMessage = "Notes cannot exceed 25 characters")]
         public string? Notes { get; set; }
     }
 }
